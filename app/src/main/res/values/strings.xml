@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KisanNetwork</string>
+    <string name="FirstTab">Contact</string>
+    <string name="SecondTab">Messages</string>
+</resources>
