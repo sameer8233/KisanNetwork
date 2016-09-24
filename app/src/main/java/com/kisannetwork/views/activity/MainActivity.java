@@ -1,5 +1,9 @@
 package com.kisannetwork.views.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     public static int count =0;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +37,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if(position==1)
-                {
-                    MessageSentFragment messageSentFragment = (MessageSentFragment) getSupportFragmentManager().getFragments().get(1);
-                    messageSentFragment.callme();
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
     }
 
@@ -70,14 +56,17 @@ public class MainActivity extends AppCompatActivity {
         here i had done this with static variable count.
         when the activity is created first time method callme will not called.
     */
-   /* @Override
+    @Override
     protected void onResume() {
         super.onResume();
-        count++;
-        if(count>=2)
-        {
-
-        }
-
-    }*/
+        IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
+       broadcastReceiver=new BroadcastReceiver() {
+           @Override
+           public void onReceive(Context context, Intent intent) {
+               MessageSentFragment messageSentFragment = (MessageSentFragment) getSupportFragmentManager().getFragments().get(1);
+               messageSentFragment.callme();
+           }
+       };
+        registerReceiver(broadcastReceiver, intentFilter);
+    }
 }

@@ -59,10 +59,13 @@ public class SendOTP extends AppCompatActivity implements View.OnClickListener {
         if (data.getMessages()[0].getErrortext() == null) {
             db.addContact(new DbContactPojo(contact_name, contact_number, Integer.toString(otp), "Success"));
             Dialogs.showMessage(this, "OTP has been sent successfully.\nYour remaining balance is: " + data.getMessages()[0].getRemainingbalance());
-
+            Intent i = new Intent("android.intent.action.MAIN");
+            this.sendBroadcast(i);
         } else {
             db.addContact(new DbContactPojo(contact_name, contact_number, Integer.toString(otp), "Failure"));
             Dialogs.showMessage(this, "OTP could not sent.\n" + data.getMessages()[0].getErrortext());
+            Intent i = new Intent("android.intent.action.MAIN");
+            this.sendBroadcast(i);
         }
 
     }
