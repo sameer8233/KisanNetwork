@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.kisannetwork.R;
 import com.kisannetwork.adapters.PagerAdapter;
@@ -31,8 +32,26 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                if(position==1)
+                {
+                    MessageSentFragment messageSentFragment = (MessageSentFragment) getSupportFragmentManager().getFragments().get(1);
+                    messageSentFragment.callme();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
@@ -51,15 +70,14 @@ public class MainActivity extends AppCompatActivity {
         here i had done this with static variable count.
         when the activity is created first time method callme will not called.
     */
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         count++;
         if(count>=2)
         {
-            MessageSentFragment messageSentFragment = (MessageSentFragment) getSupportFragmentManager().getFragments().get(1);
-            messageSentFragment.callme();
+
         }
 
-    }
+    }*/
 }

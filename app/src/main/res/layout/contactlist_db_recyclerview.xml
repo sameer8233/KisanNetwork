@@ -4,7 +4,7 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_contactList_cardView_marginTop"
+    android:layout_margin="@dimen/fragment_contactList_cardView_marginTop"
     card_view:cardCornerRadius="@dimen/chat_box_radius"
     card_view:cardElevation="2dp">
 
@@ -16,7 +16,6 @@
         android:id="@+id/contact_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fragment_contactList_contactName_margin"
         android:padding="@dimen/fragment_contactList_contactName_padding"
         android:textSize="@dimen/fragment_contactList_contactName_textSize" />
 

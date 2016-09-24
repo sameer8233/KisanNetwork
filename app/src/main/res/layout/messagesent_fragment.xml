@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/msg_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:text="No Messages Sent Yet."/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contact_list_recyclerview"
         android:layout_width="match_parent"

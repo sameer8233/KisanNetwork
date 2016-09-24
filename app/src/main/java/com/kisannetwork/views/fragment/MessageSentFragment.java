@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kisannetwork.R;
@@ -29,6 +30,7 @@ public class MessageSentFragment extends Fragment{
     private RecyclerView recyclerView;
     private ContactListDbRecyclerAdapter contactListDbRecyclerAdapter;
     private static MessageSentPresenter messageSentPresenter;
+    private TextView msg_text;
 
     public static MessageSentFragment newInstance() {
 
@@ -84,6 +86,7 @@ public class MessageSentFragment extends Fragment{
     }
 
     public void init(){
+        msg_text=(TextView)view.findViewById(R.id.msg_text);
         recyclerView=(RecyclerView)view.findViewById(R.id.contact_list_recyclerview);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -97,10 +100,11 @@ public class MessageSentFragment extends Fragment{
     {
         if (list.size()>0)
         {
+            msg_text.setVisibility(View.GONE);
             contactListDbRecyclerAdapter.setData(list);
 
         }else {
-            Dialogs.showMessage(this.getActivity(),"No Messages sent.");
+                msg_text.setVisibility(View.VISIBLE);
         }
 
     }
