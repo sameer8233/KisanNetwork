@@ -32,6 +32,9 @@ public class ContactListDbRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     public void setData(List<DbContactPojo> list) {
         contact_list = list;
+        //decending order of list
+        //we can do this by changing date into miliseconds and then compare each entry.
+        //but here is simple solution we just have to reverse the list which we are getting from database.
         Collections.reverse(contact_list);
         notifyDataSetChanged();
     }
