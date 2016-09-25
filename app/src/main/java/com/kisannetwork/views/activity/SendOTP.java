@@ -33,6 +33,7 @@ public class SendOTP extends AppCompatActivity implements View.OnClickListener {
         contact_number = i.getStringExtra("contact_number");
         contact_name = i.getStringExtra("contact_name");
         init();
+        // generating random number otp.
         Random random = new Random();
         otp = random.nextInt(900000);
         message.setText("Hi. Your OTP is: " + otp);
@@ -56,7 +57,7 @@ public class SendOTP extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void setData(MessageResponse data) {
-        Intent i = new Intent("android.intent.action.MAIN");
+        Intent i = new Intent("custom");
         if (data.getMessages()[0].getErrortext() == null) {
             db.addContact(new DbContactPojo(contact_name, contact_number, Integer.toString(otp), "Success"));
             Dialogs.showMessage(this, "OTP has been sent successfully.\nYour remaining balance is: " + data.getMessages()[0].getRemainingbalance());

@@ -41,13 +41,14 @@ public class ContactListDbRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     public class TextViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView contact_name,status,otp;
+        private TextView contact_name,status,otp,time;
 
         public TextViewHolder(View itemView) {
             super(itemView);
             contact_name = (TextView) itemView.findViewById(R.id.contact_name);
             status = (TextView) itemView.findViewById(R.id.status);
             otp = (TextView) itemView.findViewById(R.id.otp);
+            time = (TextView) itemView.findViewById(R.id.time);
         }
     }
 
@@ -67,6 +68,7 @@ public class ContactListDbRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
         ((TextViewHolder) holder).contact_name.setText(contact_list.get(position).getContact_name());
         ((TextViewHolder) holder).otp.setText(contact_list.get(position).getOtp());
         ((TextViewHolder) holder).status.setText(contact_list.get(position).getMessage_status());
+        ((TextViewHolder) holder).time.setText(contact_list.get(position).getOtp_time());
 
 
     }

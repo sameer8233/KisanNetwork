@@ -1,5 +1,9 @@
 package com.kisannetwork.views.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +35,6 @@ public class MessageSentFragment extends Fragment{
     private ContactListDbRecyclerAdapter contactListDbRecyclerAdapter;
     private static MessageSentPresenter messageSentPresenter;
     private TextView msg_text;
-
     public static MessageSentFragment newInstance() {
 
         return new MessageSentFragment();
@@ -53,7 +56,6 @@ public class MessageSentFragment extends Fragment{
         view = inflater.inflate(R.layout.messagesent_fragment, container, false);
 
         init();
-
 
 
         if (messageSentPresenter == null) {

@@ -59,14 +59,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
-       broadcastReceiver=new BroadcastReceiver() {
-           @Override
-           public void onReceive(Context context, Intent intent) {
-               MessageSentFragment messageSentFragment = (MessageSentFragment) getSupportFragmentManager().getFragments().get(1);
-               messageSentFragment.callme();
-           }
-       };
+        IntentFilter intentFilter = new IntentFilter("custom");
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                MessageSentFragment messageSentFragment = (MessageSentFragment)getSupportFragmentManager().getFragments().get(1);
+                messageSentFragment.callme();
+            }
+        };
         registerReceiver(broadcastReceiver, intentFilter);
     }
+
+
 }

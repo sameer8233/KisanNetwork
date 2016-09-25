@@ -33,5 +33,12 @@
         android:padding="@dimen/fragment_contactList_contactName_padding"
         android:textSize="@dimen/fragment_contactList_contactName_textSize" />
 
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="@dimen/fragment_contactList_contactName_padding"
+            android:textSize="12dp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
